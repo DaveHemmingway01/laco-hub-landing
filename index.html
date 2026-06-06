@@ -13,7 +13,7 @@
       if ("scrollRestoration" in history) history.scrollRestoration = "manual";
       window.addEventListener("beforeunload", () => window.scrollTo(0, 0));
     </script>
-    <link rel="stylesheet" href="./styles.css?v=39" />
+    <link rel="stylesheet" href="./styles.css?v=41" />
   </head>
   <body>
     <header class="site-header">
@@ -22,17 +22,23 @@
       </a>
 
       <nav class="nav" aria-label="Main navigation">
-        <a href="#spaces">Spaces</a>
-        <a href="#community">Community</a>
-        <a href="#life">Life</a>
-        <a href="#location">Location</a>
-        <a href="#contact">Contact</a>
+        <a href="#spaces" data-i18n="nav.spaces">Spaces</a>
+        <a href="#community" data-i18n="nav.community">Community</a>
+        <a href="#life" data-i18n="nav.life">Life</a>
+        <a href="#location" data-i18n="nav.location">Location</a>
+        <a href="#contact" data-i18n="nav.contact">Contact</a>
       </nav>
 
-      <a class="header-cta" href="#contact">Check availability</a>
+      <a class="header-cta" href="#contact" data-i18n="cta.availability">Check availability</a>
+
+      <div class="language-toggle" aria-label="Choose language">
+        <button type="button" class="active" data-lang="en" aria-pressed="true">EN</button>
+        <span aria-hidden="true">/</span>
+        <button type="button" data-lang="pt" aria-pressed="false">PT</button>
+      </div>
 
       <button class="mobile-menu-toggle" type="button" aria-expanded="false" aria-controls="mobileMenu" aria-label="Open menu">
-        <span>Menu</span>
+        <span data-i18n="menu.label">Menu</span>
         <span class="menu-icon" aria-hidden="true">
           <span></span>
           <span></span>
@@ -41,11 +47,16 @@
       </button>
 
       <nav id="mobileMenu" class="mobile-menu" aria-label="Mobile navigation" aria-hidden="true">
-        <a href="#spaces" tabindex="-1">Spaces</a>
-        <a href="#community" tabindex="-1">Community</a>
-        <a href="#life" tabindex="-1">Life</a>
-        <a href="#location" tabindex="-1">Location</a>
-        <a href="#contact" tabindex="-1">Contact</a>
+        <div class="mobile-language-toggle language-toggle" aria-label="Choose language">
+          <button type="button" class="active" data-lang="en" aria-pressed="true" tabindex="-1">EN</button>
+          <span aria-hidden="true">/</span>
+          <button type="button" data-lang="pt" aria-pressed="false" tabindex="-1">PT</button>
+        </div>
+        <a href="#spaces" tabindex="-1" data-i18n="nav.spaces">Spaces</a>
+        <a href="#community" tabindex="-1" data-i18n="nav.community">Community</a>
+        <a href="#life" tabindex="-1" data-i18n="nav.life">Life</a>
+        <a href="#location" tabindex="-1" data-i18n="nav.location">Location</a>
+        <a href="#contact" tabindex="-1" data-i18n="nav.contact">Contact</a>
       </nav>
     </header>
 
@@ -69,21 +80,21 @@
 
         <div class="hero-inner">
           <div class="hero-copy">
-            <h1>Work, create, build and grow in Lagos.</h1>
-            <p>
+            <h1 data-i18n="hero.title">Work, create, build and grow in Lagos.</h1>
+            <p data-i18n="hero.copy">
               Flexible offices, workshops, logistics and light industrial spaces
               inside a factory-turned-business and culture hub near the N125 and A22.
             </p>
             <div class="hero-actions">
-              <a class="button primary" href="#contact">Check availability</a>
-              <a class="button secondary" href="#spaces">Explore spaces</a>
+              <a class="button primary" href="#contact" data-i18n="cta.availability">Check availability</a>
+              <a class="button secondary" href="#spaces" data-i18n="cta.explore">Explore spaces</a>
             </div>
           </div>
 
           <div class="availability-card">
-            <span>Now matching tenants</span>
-            <strong>Offices, storage and workshops</strong>
-            <a href="#contact">Tell us what you need</a>
+            <span data-i18n="availability.eyebrow">Now matching tenants</span>
+            <strong data-i18n="availability.title">Offices, storage and workshops</strong>
+            <a href="#contact" data-i18n="availability.link">Tell us what you need</a>
           </div>
         </div>
       </section>
@@ -91,36 +102,36 @@
       <section class="proof-strip" aria-label="Laco Hub key details">
         <div>
           <strong class="stat-value" data-animate="number" data-final="3892" data-suffix=" m2">3,892 m2</strong>
-          <span>covered area</span>
+          <span data-i18n="stats.covered">covered area</span>
         </div>
         <div>
           <strong class="stat-value" data-animate="number" data-final="7344" data-suffix=" m2">7,344 m2</strong>
-          <span>exterior area</span>
+          <span data-i18n="stats.exterior">exterior area</span>
         </div>
         <div>
           <strong>N125 + A22</strong>
-          <span>fast access</span>
+          <span data-i18n="stats.access">fast access</span>
         </div>
         <div>
           <strong>Parking</strong>
-          <span>for teams and logistics</span>
+          <span data-i18n="stats.parking">for teams and logistics</span>
         </div>
       </section>
 
       <section id="spaces" class="section spaces-section">
         <div class="section-heading">
-          <h2>Choose the right base for the work you do.</h2>
-          <p>
+          <h2 data-i18n="spaces.title">Choose the right base for the work you do.</h2>
+          <p data-i18n="spaces.copy">
             Start with a use case, then talk to the Laco team about size,
             utilities, access and availability.
           </p>
         </div>
 
         <div class="space-filter" aria-label="Filter spaces">
-          <button class="filter-btn active" type="button" data-filter="all" aria-pressed="true">All</button>
-          <button class="filter-btn" type="button" data-filter="quiet" aria-pressed="false">Quiet work</button>
-          <button class="filter-btn" type="button" data-filter="industrial" aria-pressed="false">Industrial</button>
-          <button class="filter-btn" type="button" data-filter="logistics" aria-pressed="false">Logistics</button>
+          <button class="filter-btn active" type="button" data-filter="all" aria-pressed="true" data-i18n="filter.all">All</button>
+          <button class="filter-btn" type="button" data-filter="quiet" aria-pressed="false" data-i18n="filter.quiet">Quiet work</button>
+          <button class="filter-btn" type="button" data-filter="industrial" aria-pressed="false" data-i18n="filter.industrial">Industrial</button>
+          <button class="filter-btn" type="button" data-filter="logistics" aria-pressed="false" data-i18n="filter.logistics">Logistics</button>
         </div>
 
         <div class="space-grid">
@@ -130,9 +141,9 @@
               alt="Office and workspace at Laco Hub"
             />
             <div>
-              <span>Quiet work</span>
-              <h3>Offices</h3>
-              <p>Move-in ready rooms for teams, operators and growing local companies.</p>
+              <span data-i18n="space.office.eyebrow">Quiet work</span>
+              <h3 data-i18n="space.office.title">Offices</h3>
+              <p data-i18n="space.office.copy">Move-in ready rooms for teams, operators and growing local companies.</p>
             </div>
           </article>
 
@@ -142,9 +153,9 @@
               alt="Flexible workshop unit at Laco Hub"
             />
             <div>
-              <span>Industrial</span>
-              <h3>Workshops</h3>
-              <p>Practical units for makers, trades, repairs and production activity.</p>
+              <span data-i18n="space.workshop.eyebrow">Industrial</span>
+              <h3 data-i18n="space.workshop.title">Workshops</h3>
+              <p data-i18n="space.workshop.copy">Practical units for makers, trades, repairs and production activity.</p>
             </div>
           </article>
 
@@ -154,9 +165,9 @@
               alt="Logistics storage boxes"
             />
             <div>
-              <span>Logistics</span>
-              <h3>Storage and fulfilment</h3>
-              <p>Covered and exterior capacity close to Lagos, the N125 and A22.</p>
+              <span data-i18n="space.storage.eyebrow">Logistics</span>
+              <h3 data-i18n="space.storage.title">Storage and fulfilment</h3>
+              <p data-i18n="space.storage.copy">Covered and exterior capacity close to Lagos, the N125 and A22.</p>
             </div>
           </article>
 
@@ -166,9 +177,9 @@
               alt="Light industrial workspace"
             />
             <div>
-              <span>Industrial + logistics</span>
-              <h3>Light industry</h3>
-              <p>Flexible space for companies that need power, access and room to work.</p>
+              <span data-i18n="space.industry.eyebrow">Industrial + logistics</span>
+              <h3 data-i18n="space.industry.title">Light industry</h3>
+              <p data-i18n="space.industry.copy">Flexible space for companies that need power, access and room to work.</p>
             </div>
           </article>
         </div>
@@ -182,28 +193,28 @@
           />
         </div>
         <div class="split-copy">
-          <h2>A productive base with a local pulse.</h2>
-          <p>
+          <h2 data-i18n="community.title">A productive base with a local pulse.</h2>
+          <p data-i18n="community.copy">
             Laco Hub brings businesses into one practical campus with a cantina,
             shared facilities and everyday chances to meet the people building in Lagos.
           </p>
           <ul class="check-list">
-            <li>Shared cantina and common areas</li>
-            <li>Business neighbours across trades and services</li>
-            <li>Markets, workshops and tenant stories</li>
-            <li>Simple access for people, vehicles and deliveries</li>
+            <li data-i18n="community.item1">Shared cantina and common areas</li>
+            <li data-i18n="community.item2">Business neighbours across trades and services</li>
+            <li data-i18n="community.item3">Markets, workshops and tenant stories</li>
+            <li data-i18n="community.item4">Simple access for people, vehicles and deliveries</li>
           </ul>
         </div>
       </section>
 
       <section id="life" class="life-section">
         <div class="section-heading light">
-          <h2>Life at Laco is already moving.</h2>
-          <p>
+          <h2 data-i18n="life.title">Life at Laco is already moving.</h2>
+          <p data-i18n="life.copy">
             Markets, makers, artists, food, workshops and real Lagos energy bring
             the hub to life beyond square meters.
           </p>
-          <a href="https://www.instagram.com/laco.hub/" target="_blank" rel="noreferrer">Follow @laco.hub</a>
+          <a href="https://www.instagram.com/laco.hub/" target="_blank" rel="noreferrer" data-i18n="life.follow">Follow @laco.hub</a>
         </div>
 
         <div class="social-mosaic" aria-label="Laco Hub moments">
@@ -314,7 +325,7 @@
           </article>
         </div>
         <div class="reel-hint" aria-hidden="true">
-          <span>Swipe for more</span>
+          <span data-i18n="life.swipe">Swipe for more</span>
           <i></i>
           <i></i>
           <i></i>
@@ -323,17 +334,17 @@
 
       <section id="location" class="section location-section">
         <div class="location-copy">
-          <h2>Easy to reach. Easy to operate from.</h2>
-          <p>
+          <h2 data-i18n="location.title">Easy to reach. Easy to operate from.</h2>
+          <p data-i18n="location.copy">
             Close to Lagos and positioned by the N125, with fast connection to
             the A22. Built for teams, vehicles, storage and daily operations.
           </p>
         </div>
         <div class="route-grid" aria-label="Access routes">
-          <div><strong>Lagos</strong><span>nearby city access</span></div>
-          <div><strong>N125</strong><span>national road frontage</span></div>
-          <div><strong>A22</strong><span>regional connection</span></div>
-          <div><strong>Parking</strong><span>on-site capacity</span></div>
+          <div><strong>Lagos</strong><span data-i18n="location.lagos">nearby city access</span></div>
+          <div><strong>N125</strong><span data-i18n="location.n125">national road frontage</span></div>
+          <div><strong>A22</strong><span data-i18n="location.a22">regional connection</span></div>
+          <div><strong data-i18n="location.parkingTitle">Parking</strong><span data-i18n="location.parkingCopy">on-site capacity</span></div>
         </div>
         <a class="map-card" href="https://maps.app.goo.gl/dGkQB2kC7qAHVi8o8" target="_blank" rel="noreferrer" aria-label="Open Laco Hub on Google Maps">
           <span class="map-art" aria-hidden="true">
@@ -343,78 +354,78 @@
             <i class="map-pin"></i>
           </span>
           <span class="map-copy">
-            <strong>Find Laco on the map</strong>
-            <span>Open route, save the pin, send it to your team.</span>
+            <strong data-i18n="map.title">Find Laco on the map</strong>
+            <span data-i18n="map.copy">Open route, save the pin, send it to your team.</span>
           </span>
-          <span class="map-action">Open Maps</span>
+          <span class="map-action" data-i18n="map.action">Open Maps</span>
         </a>
       </section>
 
       <section id="contact" class="contact-section">
         <div class="contact-copy">
-          <h2>Tell us what kind of space you need.</h2>
-          <p>
+          <h2 data-i18n="contact.title">Tell us what kind of space you need.</h2>
+          <p data-i18n="contact.copy">
             Share the basics and the Laco team can match your business with the
             right office, workshop, storage or industrial option.
           </p>
           <div class="contact-note">
-            <strong>Useful to include</strong>
-            <span>Space size, vehicle access, utilities, timing and team size.</span>
+            <strong data-i18n="contact.noteTitle">Useful to include</strong>
+            <span data-i18n="contact.noteCopy">Space size, vehicle access, utilities, timing and team size.</span>
           </div>
         </div>
 
         <form class="contact-form" id="availabilityForm">
           <label>
-            Name
+            <span data-i18n="form.name">Name</span>
             <input name="name" type="text" autocomplete="name" required />
           </label>
           <label>
-            Email
+            <span data-i18n="form.email">Email</span>
             <input name="email" type="email" autocomplete="email" required />
           </label>
           <label>
-            Space type
+            <span data-i18n="form.space">Space type</span>
             <select name="space">
-              <option>Office</option>
-              <option>Workshop</option>
-              <option>Logistics & storage</option>
-              <option>Light industry</option>
-              <option>Not sure yet</option>
+              <option data-i18n="form.optionOffice">Office</option>
+              <option data-i18n="form.optionWorkshop">Workshop</option>
+              <option data-i18n="form.optionStorage">Logistics & storage</option>
+              <option data-i18n="form.optionIndustry">Light industry</option>
+              <option data-i18n="form.optionUnsure">Not sure yet</option>
             </select>
           </label>
           <label>
-            What do you need?
+            <span data-i18n="form.message">What do you need?</span>
             <textarea name="message" rows="4"></textarea>
           </label>
-          <button class="button primary" type="submit">Request availability</button>
+          <button class="button primary" type="submit" data-i18n="form.submit">Request availability</button>
           <p class="form-status" id="formStatus" role="status"></p>
         </form>
       </section>
 
       <section id="news" class="section news-section">
         <div class="section-heading compact">
-          <h2>News from the hub.</h2>
-          <p>Keep the site fresh with unit openings, tenants, markets, workshops and availability updates.</p>
+          <h2 data-i18n="news.title">News from the hub.</h2>
+          <p data-i18n="news.copy">Keep the site fresh with unit openings, tenants, markets, workshops and availability updates.</p>
         </div>
 
         <div class="news-grid">
           <article>
             <button class="news-gallery-trigger" type="button" aria-controls="workshopLightbox">
-              <span>Workshop update</span>
-              <h3>New workshop spaces under construction</h3>
-              <p>The build is moving. Ask us for sizes, timing and availability, or open the latest photo update.</p>
-              <strong>View photos</strong>
+              <span data-i18n="news.workshop.eyebrow">Workshop update</span>
+              <h3 data-i18n="news.workshop.title">New workshop spaces under construction</h3>
+              <p data-i18n="news.workshop.copy">The build is moving. Ask us for sizes, timing and availability, or open the latest photo update.</p>
+              <strong data-i18n="news.workshop.action">View photos</strong>
             </button>
           </article>
           <article>
-            <span>Events</span>
-            <h3>Markets, food and open days</h3>
-            <p>Bring the Instagram energy onto the website and drive visits.</p>
+            <span data-i18n="news.events.eyebrow">Events</span>
+            <h3 data-i18n="news.events.title">Markets, food and open days</h3>
+            <p data-i18n="news.events.copy">Bring the Instagram energy onto the website and drive visits.</p>
           </article>
           <article>
-            <span>Community</span>
-            <h3>Meet the makers at Laco</h3>
-            <p>Feature tenants, artists and operators using the hub every week.</p>
+            <span data-i18n="news.community.eyebrow">Community</span>
+            <h3 data-i18n="news.community.title">Meet the makers at Laco</h3>
+            <p data-i18n="news.community.copy">Feature tenants, artists and operators using the hub every week.</p>
           </article>
         </div>
       </section>
@@ -423,11 +434,11 @@
     <footer class="footer">
       <div class="footer-brand">
         <strong>Laco Hub Lagos</strong>
-        <span>Flexible business space near Lagos, Portugal.</span>
+        <span data-i18n="footer.tagline">Flexible business space near Lagos, Portugal.</span>
       </div>
 
       <address class="footer-contact">
-        <strong>Address</strong>
+        <strong data-i18n="footer.address">Address</strong>
         <span>Sítio de Pinheiral, 8600-306 Lagos, Portugal</span>
         <span><a href="mailto:info@lacohub.com">info@lacohub.com</a> / <a href="tel:+351925826030">+351 925 826 030</a></span>
       </address>
@@ -438,33 +449,33 @@
         <a href="#" aria-label="Laco Hub LinkedIn">LinkedIn</a>
       </nav>
 
-      <p class="footer-credit">© 2026 All rights reserved, Laco hub website is powered by Davinci &amp; CO</p>
+      <p class="footer-credit" data-i18n="footer.credit">© 2026 All rights reserved, Laco hub website is powered by Davinci &amp; CO</p>
     </footer>
 
     <div class="lightbox" id="workshopLightbox" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Workshop construction photo gallery">
       <div class="lightbox-panel">
         <button class="lightbox-close" type="button" aria-label="Close gallery">×</button>
         <div class="lightbox-heading">
-          <span>Workshop update</span>
-          <strong>New spaces under construction</strong>
-          <p>Scroll sideways through the latest build photos. Ask us for sizes, timing and availability.</p>
+          <span data-i18n="lightbox.eyebrow">Workshop update</span>
+          <strong data-i18n="lightbox.title">New spaces under construction</strong>
+          <p data-i18n="lightbox.copy">Scroll sideways through the latest build photos. Ask us for sizes, timing and availability.</p>
         </div>
         <div class="lightbox-strip" tabindex="0" aria-label="Workshop construction images">
           <figure>
             <img src="./assets/news/workshop-1.jpeg" alt="Wide overview of new timber workshop spaces under construction" />
-            <figcaption>Workshop framing overview</figcaption>
+            <figcaption data-i18n="lightbox.caption1">Workshop framing overview</figcaption>
           </figure>
           <figure>
             <img src="./assets/news/workshop-2.jpeg" alt="High view of timber workshop walls being built inside Laco Hub" />
-            <figcaption>Units taking shape</figcaption>
+            <figcaption data-i18n="lightbox.caption2">Units taking shape</figcaption>
           </figure>
           <figure>
             <img src="./assets/news/workshop-3.jpeg" alt="Interior view through new timber workshop entrances" />
-            <figcaption>Fresh workshop interiors</figcaption>
+            <figcaption data-i18n="lightbox.caption3">Fresh workshop interiors</figcaption>
           </figure>
           <figure>
             <img src="./assets/news/workshop-4.jpeg" alt="Close view of timber workshop construction details" />
-            <figcaption>Construction detail</figcaption>
+            <figcaption data-i18n="lightbox.caption4">Construction detail</figcaption>
           </figure>
         </div>
       </div>
@@ -472,9 +483,9 @@
 
     <button class="back-to-top" type="button" aria-label="Back to top">
       <span aria-hidden="true">↑</span>
-      <strong>Top</strong>
+      <strong data-i18n="top.label">Top</strong>
     </button>
 
-    <script src="./app.js?v=39"></script>
+    <script src="./app.js?v=41"></script>
   </body>
 </html>
