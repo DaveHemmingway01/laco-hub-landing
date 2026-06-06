@@ -13,7 +13,7 @@
       if ("scrollRestoration" in history) history.scrollRestoration = "manual";
       window.addEventListener("beforeunload", () => window.scrollTo(0, 0));
     </script>
-    <link rel="stylesheet" href="./styles.css?v=41" />
+    <link rel="stylesheet" href="./styles.css?v=42" />
   </head>
   <body>
     <header class="site-header">
@@ -361,6 +361,33 @@
         </a>
       </section>
 
+      <section id="news" class="section news-section">
+        <div class="section-heading compact">
+          <h2 data-i18n="news.title">News from the hub.</h2>
+          <p data-i18n="news.copy">Keep the site fresh with unit openings, tenants, markets, workshops and availability updates.</p>
+        </div>
+
+        <div class="news-grid">
+          <article>
+            <button class="news-gallery-trigger" type="button" aria-controls="workshopLightbox">
+              <span data-i18n="news.workshop.eyebrow">Workshop update</span>
+              <h3 data-i18n="news.workshop.title">New workshop spaces under construction</h3>
+              <p data-i18n="news.workshop.copy">The build is moving. Ask us for sizes, timing and availability, or open the latest photo update.</p>
+              <strong data-i18n="news.workshop.action">View photos</strong>
+            </button>
+          </article>
+          <article>
+            <span data-i18n="news.events.eyebrow">Events</span>
+            <h3 data-i18n="news.events.title">Markets, food and open days</h3>
+            <p data-i18n="news.events.copy">Bring the Instagram energy onto the website and drive visits.</p>
+          </article>
+          <article>
+            <span data-i18n="news.community.eyebrow">Community</span>
+            <h3 data-i18n="news.community.title">Meet the makers at Laco</h3>
+            <p data-i18n="news.community.copy">Feature tenants, artists and operators using the hub every week.</p>
+          </article>
+        </div>
+      </section>
       <section id="contact" class="contact-section">
         <div class="contact-copy">
           <h2 data-i18n="contact.title">Tell us what kind of space you need.</h2>
@@ -402,33 +429,6 @@
         </form>
       </section>
 
-      <section id="news" class="section news-section">
-        <div class="section-heading compact">
-          <h2 data-i18n="news.title">News from the hub.</h2>
-          <p data-i18n="news.copy">Keep the site fresh with unit openings, tenants, markets, workshops and availability updates.</p>
-        </div>
-
-        <div class="news-grid">
-          <article>
-            <button class="news-gallery-trigger" type="button" aria-controls="workshopLightbox">
-              <span data-i18n="news.workshop.eyebrow">Workshop update</span>
-              <h3 data-i18n="news.workshop.title">New workshop spaces under construction</h3>
-              <p data-i18n="news.workshop.copy">The build is moving. Ask us for sizes, timing and availability, or open the latest photo update.</p>
-              <strong data-i18n="news.workshop.action">View photos</strong>
-            </button>
-          </article>
-          <article>
-            <span data-i18n="news.events.eyebrow">Events</span>
-            <h3 data-i18n="news.events.title">Markets, food and open days</h3>
-            <p data-i18n="news.events.copy">Bring the Instagram energy onto the website and drive visits.</p>
-          </article>
-          <article>
-            <span data-i18n="news.community.eyebrow">Community</span>
-            <h3 data-i18n="news.community.title">Meet the makers at Laco</h3>
-            <p data-i18n="news.community.copy">Feature tenants, artists and operators using the hub every week.</p>
-          </article>
-        </div>
-      </section>
     </main>
 
     <footer class="footer">
@@ -486,6 +486,6 @@
       <strong data-i18n="top.label">Top</strong>
     </button>
 
-    <script src="./app.js?v=41"></script>
+    <script src="./app.js?v=42"></script>
   </body>
 </html>
