@@ -269,7 +269,9 @@ window.addEventListener("DOMContentLoaded", resetToTop);
 
 if (heroVideo && heroMedia && /^https?:$/.test(window.location.protocol)) {
   heroVideo.addEventListener("load", () => {
-    heroMedia.classList.add("video-loaded");
+    window.setTimeout(() => {
+      heroMedia.classList.add("video-loaded");
+    }, 2200);
   }, { once: true });
 
   const videoUrl = new URL(heroVideo.dataset.src);
