@@ -9,3 +9,6 @@ build/
 .env
 .env.*
 
+.playwright-cli/
+output/
+newsletter-google-sheet-*.png

@@ -1,7 +1,5 @@
 const filterButtons = document.querySelectorAll(".filter-btn");
 const spaceCards = document.querySelectorAll(".space-card");
-const form = document.querySelector("#availabilityForm");
-const formStatus = document.querySelector("#formStatus");
 const siteHeader = document.querySelector(".site-header");
 const menuToggle = document.querySelector(".mobile-menu-toggle");
 const mobileMenu = document.querySelector("#mobileMenu");
@@ -9,12 +7,17 @@ const statValues = document.querySelectorAll(".stat-value");
 const backToTop = document.querySelector(".back-to-top");
 const heroMedia = document.querySelector(".hero-media");
 const heroVideo = document.querySelector(".hero-video");
-const socialTiles = document.querySelectorAll(".social-tile");
+const tenantTiles = document.querySelectorAll(".social-tile");
 const workshopLightbox = document.querySelector("#workshopLightbox");
 const workshopLightboxTrigger = document.querySelector(".news-gallery-trigger");
 const workshopLightboxClose = document.querySelector(".lightbox-close");
 const workshopLightboxStrip = document.querySelector(".lightbox-strip");
 const languageButtons = document.querySelectorAll("[data-lang]");
+const newsletterForm = document.querySelector("#newsletterForm");
+const newsletterFrame = document.querySelector('iframe[name="newsletterSubmission"]');
+const newsletterSuccess = document.querySelector("#newsletterSuccess");
+const newsletterLanguage = document.querySelector("#newsletterLanguage");
+const communityList = document.querySelector(".community-section .check-list");
 
 const translations = {
   en: {
@@ -22,17 +25,14 @@ const translations = {
     "meta.description": "Laco Hub Lagos offers flexible offices, workshops, logistics and light industrial space near the N125 and A22.",
     "nav.spaces": "Spaces",
     "nav.community": "Community",
-    "nav.life": "Life",
+    "nav.life": "Tenants",
     "nav.location": "Location",
     "nav.contact": "Contact",
     "cta.availability": "Check availability",
     "cta.explore": "Explore spaces",
     "menu.label": "Menu",
-    "hero.title": "Work, create, build and grow in Lagos.",
+    "hero.title": "Work,\ncreate, build\nand grow in Lagos.",
     "hero.copy": "Flexible offices, workshops, logistics and light industrial spaces inside a factory-turned-business and culture hub near the N125 and A22.",
-    "availability.eyebrow": "Now matching tenants",
-    "availability.title": "Offices, storage and workshops",
-    "availability.link": "Tell us what you need",
     "stats.covered": "covered area",
     "stats.exterior": "exterior area",
     "stats.access": "fast access",
@@ -61,9 +61,9 @@ const translations = {
     "community.item2": "Business neighbours across trades and services",
     "community.item3": "Markets, workshops and tenant stories",
     "community.item4": "Simple access for people, vehicles and deliveries",
-    "life.title": "Life at Laco is already moving.",
-    "life.copy": "Markets, makers, artists, food, workshops and real Lagos energy bring the hub to life beyond square meters.",
-    "life.follow": "Follow @laco.hub",
+    "life.title": "Entrepreneurs at Laco Hub.",
+    "life.copy": "Meet the makers, food brands, artists, workshop operators and local businesses building from the hub.",
+    "life.follow": "Follow tenant stories",
     "life.swipe": "Swipe for more",
     "location.title": "Easy to reach. Easy to operate from.",
     "location.copy": "Close to Lagos and positioned by the N125, with fast connection to the A22. Built for teams, vehicles, storage and daily operations.",
@@ -89,7 +89,14 @@ const translations = {
     "form.optionUnsure": "Not sure yet",
     "form.message": "What do you need?",
     "form.submit": "Request availability",
-    "form.status": "Thanks. Your {space} request is ready to send in the production build.",
+    "newsletter.eyebrow": "From the hub",
+    "newsletter.title": "Stay in the loop.",
+    "newsletter.copy": "Occasional updates on new spaces, people and happenings at Laco Hub.",
+    "newsletter.email": "Email address",
+    "newsletter.consent": "I would like to receive occasional Laco Hub news by email.",
+    "newsletter.submit": "Subscribe",
+    "newsletter.successTitle": "Thank you.",
+    "newsletter.successCopy": "You are now on the Laco Hub update list.",
     "news.title": "News from the hub.",
     "news.copy": "Keep the site fresh with unit openings, tenants, markets, workshops and availability updates.",
     "news.workshop.eyebrow": "Workshop update",
@@ -104,7 +111,8 @@ const translations = {
     "news.community.copy": "Feature tenants, artists and operators using the hub every week.",
     "footer.tagline": "Flexible business space near Lagos, Portugal.",
     "footer.address": "Address",
-    "footer.credit": "© 2026 All rights reserved, Laco hub website is powered by Davinci & CO",
+    "footer.email": "Email us",
+    "footer.credit": "© 2026 All rights reserved, Laco hub website is powered by Davinci Studio",
     "lightbox.eyebrow": "Workshop update",
     "lightbox.title": "New spaces under construction",
     "lightbox.copy": "Scroll sideways through the latest build photos. Ask us for sizes, timing and availability.",
@@ -119,17 +127,14 @@ const translations = {
     "meta.description": "O Laco Hub Lagos oferece escritórios, oficinas, logística e espaços industriais ligeiros perto da N125 e da A22.",
     "nav.spaces": "Espaços",
     "nav.community": "Comunidade",
-    "nav.life": "Vida",
+    "nav.life": "Inquilinos",
     "nav.location": "Localização",
     "nav.contact": "Contacto",
     "cta.availability": "Ver disponibilidade",
     "cta.explore": "Explorar espaços",
     "menu.label": "Menu",
-    "hero.title": "Trabalhe, crie, construa e cresça em Lagos.",
+    "hero.title": "Trabalhe, crie,\nconstrua e cresça\nem Lagos.",
     "hero.copy": "Escritórios, oficinas, logística e espaços industriais ligeiros dentro de uma antiga fábrica transformada em hub de negócios e cultura, perto da N125 e da A22.",
-    "availability.eyebrow": "A receber novos inquilinos",
-    "availability.title": "Escritórios, armazéns e oficinas",
-    "availability.link": "Diga-nos o que precisa",
     "stats.covered": "área coberta",
     "stats.exterior": "área exterior",
     "stats.access": "acesso rápido",
@@ -158,9 +163,9 @@ const translations = {
     "community.item2": "Vizinhos de negócio de vários setores",
     "community.item3": "Mercados, workshops e histórias de inquilinos",
     "community.item4": "Acesso simples para pessoas, veículos e entregas",
-    "life.title": "A vida no Laco já está em movimento.",
-    "life.copy": "Mercados, makers, artistas, comida, workshops e a energia real de Lagos dão vida ao hub para além dos metros quadrados.",
-    "life.follow": "Seguir @laco.hub",
+    "life.title": "Empreendedores no Laco Hub.",
+    "life.copy": "Conheça makers, marcas de comida, artistas, operadores de oficinas e negócios locais a crescer no hub.",
+    "life.follow": "Seguir histórias dos inquilinos",
     "life.swipe": "Deslize para ver mais",
     "location.title": "Fácil de chegar. Fácil de operar.",
     "location.copy": "Perto de Lagos e junto à N125, com ligação rápida à A22. Pensado para equipas, veículos, armazenamento e operações diárias.",
@@ -186,7 +191,14 @@ const translations = {
     "form.optionUnsure": "Ainda não sei",
     "form.message": "O que precisa?",
     "form.submit": "Pedir disponibilidade",
-    "form.status": "Obrigado. O seu pedido para {space} está pronto para envio na versão final.",
+    "newsletter.eyebrow": "Do hub",
+    "newsletter.title": "Fique a par.",
+    "newsletter.copy": "Atualizações ocasionais sobre novos espaços, pessoas e acontecimentos no Laco Hub.",
+    "newsletter.email": "Endereço de email",
+    "newsletter.consent": "Quero receber notícias ocasionais do Laco Hub por email.",
+    "newsletter.submit": "Subscrever",
+    "newsletter.successTitle": "Obrigado.",
+    "newsletter.successCopy": "Já faz parte da lista de atualizações do Laco Hub.",
     "news.title": "Notícias do hub.",
     "news.copy": "Mantenha-se a par de novas unidades, inquilinos, mercados, workshops e disponibilidade.",
     "news.workshop.eyebrow": "Atualização das oficinas",
@@ -201,7 +213,8 @@ const translations = {
     "news.community.copy": "Destaque para inquilinos, artistas e operadores que usam o hub todas as semanas.",
     "footer.tagline": "Espaço flexível para negócios perto de Lagos, Portugal.",
     "footer.address": "Morada",
-    "footer.credit": "© 2026 Todos os direitos reservados, website Laco Hub powered by Davinci & CO",
+    "footer.email": "Envie-nos um email",
+    "footer.credit": "© 2026 Todos os direitos reservados, website Laco Hub powered by Davinci Studio",
     "lightbox.eyebrow": "Atualização das oficinas",
     "lightbox.title": "Novos espaços em construção",
     "lightbox.copy": "Deslize lateralmente pelas fotos mais recentes da obra. Peça-nos áreas, timings e disponibilidade.",
@@ -239,6 +252,8 @@ const setLanguage = (lang) => {
     button.classList.toggle("active", isActive);
     button.setAttribute("aria-pressed", String(isActive));
   });
+
+  if (newsletterLanguage) newsletterLanguage.value = nextLang;
 
   localStorage.setItem("laco-language", nextLang);
 };
@@ -279,24 +294,33 @@ if (heroVideo && heroMedia && /^https?:$/.test(window.location.protocol)) {
   heroVideo.src = videoUrl.toString();
 }
 
-socialTiles.forEach((tile) => {
-  const image = tile.querySelector("img");
-  const label = tile.querySelector("div");
-  if (!image || !label || tile.querySelector(".tile-flipper")) return;
+tenantTiles.forEach((tile) => {
+  const front = tile.querySelector(".tile-front");
+  if (!front) return;
 
-  const flipper = document.createElement("div");
-  flipper.className = "tile-flipper";
+  front.addEventListener("click", () => {
+    tile.classList.toggle("is-flipped");
+  });
 
-  const front = document.createElement("div");
-  front.className = "tile-face tile-front";
+  front.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      tile.classList.remove("is-flipped");
+      front.focus();
+    }
+  });
+});
 
-  const back = document.createElement("div");
-  back.className = "tile-face tile-back";
-  back.innerHTML = `<span>${tile.dataset.logo || ""}</span><strong>${tile.dataset.company || ""}</strong>`;
+let newsletterPending = false;
 
-  front.append(image, label);
-  flipper.append(front, back);
-  tile.append(flipper);
+newsletterForm?.addEventListener("submit", () => {
+  newsletterPending = true;
+});
+
+newsletterFrame?.addEventListener("load", () => {
+  if (!newsletterPending || !newsletterForm || !newsletterSuccess) return;
+
+  newsletterForm.hidden = true;
+  newsletterSuccess.hidden = false;
 });
 
 const setWorkshopLightboxOpen = (isOpen) => {
@@ -348,16 +372,6 @@ filterButtons.forEach((button) => {
     });
   });
 });
-
-if (form && formStatus) {
-  form.addEventListener("submit", (event) => {
-    event.preventDefault();
-    const data = new FormData(form);
-    const space = String(data.get("space") || "space").toLowerCase();
-    formStatus.textContent = getTranslation("form.status").replace("{space}", space);
-    form.reset();
-  });
-}
 
 const setMenuOpen = (isOpen) => {
   if (!siteHeader || !menuToggle || !mobileMenu) return;
@@ -421,6 +435,26 @@ if ("IntersectionObserver" in window) {
   statValues.forEach((stat) => {
     stat.textContent = `${Number(stat.dataset.final).toLocaleString("en-US")}${stat.dataset.suffix || ""}`;
   });
+}
+
+if (communityList) {
+  communityList.classList.add("is-animated");
+
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    communityList.classList.add("is-revealed");
+  } else if ("IntersectionObserver" in window) {
+    const communityObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("is-revealed");
+        observer.unobserve(entry.target);
+      });
+    }, { threshold: 0.3 });
+
+    communityObserver.observe(communityList);
+  } else {
+    communityList.classList.add("is-revealed");
+  }
 }
 
 if (backToTop) {
