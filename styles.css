@@ -682,7 +682,7 @@ h2 {
 .tone-teal .tile-front { background: #167f91; }
 
 @media (hover: none) {
-  .social-tile:hover .tile-flipper {
+  .social-tile:not(.is-flipped):hover .tile-flipper {
     transform: none;
   }
 }
@@ -1284,7 +1284,7 @@ h2 {
 .footer-email-button:focus-visible {
   border-color: var(--yellow);
   background: var(--yellow);
-  color: #000;
+  color: var(--ink) !important;
 }
 
 .footer-links {
@@ -1620,6 +1620,10 @@ h2 {
   .social-tile {
     flex: 0 0 min(76vw, 310px);
     scroll-snap-align: start;
+  }
+
+  .tile-front {
+    touch-action: manipulation;
   }
 
   .map-card {

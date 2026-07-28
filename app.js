@@ -304,12 +304,28 @@ if (heroVideo && heroMedia && /^https?:$/.test(window.location.protocol)) {
   heroVideo.src = videoUrl.toString();
 }
 
+const usesTouchTiles = window.matchMedia("(hover: none) and (pointer: coarse)").matches;
+
+function flipTenantTile(tile) {
+  tenantTiles.forEach((otherTile) => {
+    if (otherTile !== tile) otherTile.classList.remove("is-flipped");
+  });
+  tile.classList.toggle("is-flipped");
+}
+
 tenantTiles.forEach((tile) => {
   const front = tile.querySelector(".tile-front");
   if (!front) return;
 
-  front.addEventListener("click", () => {
-    tile.classList.toggle("is-flipped");
+  front.addEventListener("pointerup", (event) => {
+    if (!usesTouchTiles || event.pointerType !== "touch") return;
+    event.preventDefault();
+    flipTenantTile(tile);
+  });
+
+  front.addEventListener("click", (event) => {
+    if (usesTouchTiles && event.detail !== 0) return;
+    flipTenantTile(tile);
   });
 
   front.addEventListener("keydown", (event) => {
