@@ -12,3 +12,4 @@ build/
 .playwright-cli/
 output/
 newsletter-google-sheet-*.png
+.vercel
