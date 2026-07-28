@@ -18,6 +18,10 @@ const newsletterFrame = document.querySelector('iframe[name="newsletterSubmissio
 const newsletterSuccess = document.querySelector("#newsletterSuccess");
 const newsletterLanguage = document.querySelector("#newsletterLanguage");
 const communityList = document.querySelector(".community-section .check-list");
+const availabilityForm = document.querySelector("#availabilityForm");
+const availabilityFrame = document.querySelector('iframe[name="availabilitySubmission"]');
+const availabilityLanguage = document.querySelector("#availabilityLanguage");
+const formStatus = document.querySelector("#formStatus");
 
 const translations = {
   en: {
@@ -89,6 +93,7 @@ const translations = {
     "form.optionUnsure": "Not sure yet",
     "form.message": "What do you need?",
     "form.submit": "Request availability",
+    "form.success": "Thank you. Your request has been sent to the Laco Hub team.",
     "newsletter.eyebrow": "From the hub",
     "newsletter.title": "Stay in the loop.",
     "newsletter.copy": "Occasional updates on new spaces, people and happenings at Laco Hub.",
@@ -191,6 +196,7 @@ const translations = {
     "form.optionUnsure": "Ainda não sei",
     "form.message": "O que precisa?",
     "form.submit": "Pedir disponibilidade",
+    "form.success": "Obrigado. O seu pedido foi enviado para a equipa Laco Hub.",
     "newsletter.eyebrow": "Do hub",
     "newsletter.title": "Fique a par.",
     "newsletter.copy": "Atualizações ocasionais sobre novos espaços, pessoas e acontecimentos no Laco Hub.",
@@ -254,6 +260,10 @@ const setLanguage = (lang) => {
   });
 
   if (newsletterLanguage) newsletterLanguage.value = nextLang;
+  if (availabilityLanguage) availabilityLanguage.value = nextLang;
+  if (formStatus?.dataset.state === "success") {
+    formStatus.textContent = getTranslation("form.success", nextLang);
+  }
 
   localStorage.setItem("laco-language", nextLang);
 };
@@ -321,6 +331,23 @@ newsletterFrame?.addEventListener("load", () => {
 
   newsletterForm.hidden = true;
   newsletterSuccess.hidden = false;
+});
+
+let availabilityPending = false;
+
+availabilityForm?.addEventListener("submit", () => {
+  availabilityPending = true;
+  if (formStatus) formStatus.textContent = "";
+});
+
+availabilityFrame?.addEventListener("load", () => {
+  if (!availabilityPending || !availabilityForm || !formStatus) return;
+
+  availabilityForm.reset();
+  if (availabilityLanguage) availabilityLanguage.value = document.documentElement.lang;
+  formStatus.dataset.state = "success";
+  formStatus.textContent = getTranslation("form.success");
+  availabilityPending = false;
 });
 
 const setWorkshopLightboxOpen = (isOpen) => {

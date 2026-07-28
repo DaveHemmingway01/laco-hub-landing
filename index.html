@@ -13,7 +13,7 @@
       if ("scrollRestoration" in history) history.scrollRestoration = "manual";
       window.addEventListener("beforeunload", () => window.scrollTo(0, 0));
     </script>
-    <link rel="stylesheet" href="./styles.css?v=60" />
+    <link rel="stylesheet" href="./styles.css?v=62" />
   </head>
   <body>
     <header class="site-header">
@@ -313,10 +313,8 @@
           </div>
         </div>
 
-        <form class="contact-form" id="availabilityForm" action="https://formsubmit.co/lacobusinesshub@gmail.com" method="POST">
-          <input type="hidden" name="_subject" value="New Laco Hub website availability request" />
-          <input type="hidden" name="_template" value="table" />
-          <input type="hidden" name="_captcha" value="false" />
+        <form class="contact-form" id="availabilityForm" action="https://script.google.com/macros/s/AKfycbyWtkIHI-bVDfGQiu1O001blMEpf8QXS396FWknEX2FPbKo12kfivhZAnbgUrJHbH_JSQ/exec" method="post" target="availabilitySubmission">
+          <input type="hidden" name="formType" value="availability" />
           <label>
             <span data-i18n="form.name">Name</span>
             <input name="name" type="text" autocomplete="name" required />
@@ -339,9 +337,12 @@
             <span data-i18n="form.message">What do you need?</span>
             <textarea name="message" rows="4" required></textarea>
           </label>
+          <input id="availabilityLanguage" type="hidden" name="language" value="en" />
+          <label class="newsletter-honeypot" aria-hidden="true">Website<input type="text" name="website" tabindex="-1" autocomplete="off" /></label>
           <button class="button primary" type="submit" data-i18n="form.submit">Request availability</button>
           <p class="form-status" id="formStatus" role="status"></p>
         </form>
+        <iframe name="availabilitySubmission" title="Availability request status" hidden></iframe>
       </section>
 
       <section class="newsletter-section" aria-labelledby="newsletterTitle">
@@ -434,6 +435,6 @@
       <strong data-i18n="top.label">Top</strong>
     </button>
 
-    <script src="./app.js?v=60"></script>
+    <script src="./app.js?v=62"></script>
   </body>
 </html>
